@@ -47,12 +47,19 @@ if __name__ == '__main__':
     print('User-supplied redshift: ',user_redshift)
 
     ### Impose quality assessment on input values
+
     ### If user input is outside acceptable ranges, return a warning
+    ### Define the acceptable ranges for magnitude limits and redshift
     filters = ['u','g','r','i','z','y']
     magmins = [23.15, 24.25, 23.95, 23.25, 22.55, 21.35]
     magmaxs = [26.78, 27.88, 27.84, 27.15, 26.37, 25.17]
     zbinmin = 0.30
     zbinmax = 3.00
+
+    ### The 7-element array 'qa' is set to all zeros to begin with (all false)
+    ### Each of the 7 elements corresponds to one of the 6 mag lims and the redshift
+    ### If one of the user-supplied values is out of acceptable range,
+    ###  then set the array elemet to 1 instead of 0
     qa = np.zeros( 7, dtype='int' )
     for m in range(6):
         if (user_maglims[m] < magmins[m]) | (user_maglims[m] > magmaxs[m]):
@@ -63,11 +70,16 @@ if __name__ == '__main__':
         qa[6] = 1
         if qa[6] == 1:
             print('Warning: redshift out of range (',zbinmin,' to ',zbinmax,')')
+
+    ### For now, lets just sum up the elements of the array
+    ### If any of the elements were set to 1, then sumqa>0
+    ### Use sumqa>0 as our "failure mode", for now
     sumqa = np.sum(qa)
     if sumqa > 0:
         print('Fix inputs and try again.')
 
-    ### If user input is not outside acceptable ranges, proceed
+    ### If user input is not outside acceptable ranges, proceed to interpolate
+    ### For now, just print the results to the screen
     if sumqa == 0:
         zbin,stats = interpolate_statistics(user_maglims,user_redshift)
         print('Predicted statistical measures (value, error):')
