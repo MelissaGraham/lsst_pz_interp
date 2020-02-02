@@ -1,0 +1,17 @@
+For year  2
+                 filters:      u      g      r      i      z      y
+          baseline limits 25.212 26.505 26.657 25.957 25.181 23.981
+       half-visits limits 24.835 26.129 26.281 25.581 24.805 23.605
+     double-visits limits 25.588 26.881 27.034 26.334 25.558 24.358
+
+For year  5
+                 filters:      u      g      r      i      z      y
+          baseline limits 25.709 27.003 27.155 26.455 25.679 24.479
+       half-visits limits 25.333 26.626 26.778 26.078 25.303 24.103
+     double-visits limits 26.085 27.379 27.531 26.831 26.055 24.855
+
+For year  10
+                 filters:      u      g      r      i      z      y
+          baseline limits 26.085 27.379 27.531 26.831 26.055 24.855
+       half-visits limits 25.709 27.003 27.155 26.455 25.679 24.479
+     double-visits limits 26.462 27.755 27.907 27.207 26.431 25.231
